@@ -3,6 +3,7 @@ require ("dotenv").config();
 const express = require("express");
 const connectDB = require(".config/db");
 const cors = require("cors");
+const sendWhatsappMessage = require("./services/whatsappService");
 
 
 const app = express();
@@ -19,3 +20,21 @@ app.use("/api/auctions", require("./routes/auctionRoutes"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
+
+//Auction end simulation
+
+const endAuction = async () => {
+    const auctions = await Auction.find({ status: "active", endTime: { $lte: newDate() } });
+
+    for (let auction of auctions) {
+        auction.status = "ended";
+        await auction.save();
+
+        sendWhatsappMessage(`Auction ended! Item: ${auction.title}, Winning Bid: ${auction.highestBid}`);
+
+    }
+
+    //interval run checkup(every minute)
+    setInterval(endAuction, 60000);
+
+}
