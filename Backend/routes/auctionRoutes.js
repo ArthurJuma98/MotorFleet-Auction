@@ -4,15 +4,29 @@ const Router = express.Router();
 
 //create Auction
 
-router.post("/", async(req, res) => {
+router.post("/", async (req, res) => {
     try {
-        const auction = new Auction(req.body);
+        const { title, basePrice, startTime, endTime, imageUrl } = req.body;
+
+        const auction = new Auction({ title, basePrice, startTime, endTime, imageUrl });
         await auction.save();
+
         res.json(auction);
-    } catch(err) {
-        res.status(500).send("Server error")
+    } catch (error) {
+        res.status(500).json({ msg: "Server error", error });
     }
 });
+
+
+// router.post("/", async(req, res) => {
+//     try {
+//         const auction = new Auction(req.body);
+//         await auction.save();
+//         res.json(auction);
+//     } catch(err) {
+//         res.status(500).send("Server error")
+//     }
+// });
 
 //Get Auctions
 
