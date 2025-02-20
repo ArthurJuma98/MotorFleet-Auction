@@ -9,6 +9,7 @@ const sendWhatsappMessage = require("./services/whatsappService");
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use("/api/upload", require("./routes/uploadRoutes"));
 
 //connect to Database
 
