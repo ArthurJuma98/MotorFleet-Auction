@@ -30,9 +30,16 @@ router.post("/", async (req, res) => {
 
 //Get Auctions
 
-router.get("/", async(req, res) => {
-    const auctions = await Auction.find();
-    res.json(auctions);
+router.get("/:id", async (req, res) => {
+    try {
+        const auction = await Auction.findById(req.params.id);
+        if (!auction) {
+            return res.status(404).json({ msg: "Auction not found" });
+        }
+        res.json(auction);
+    } catch (error) {
+        res.status(500).json({ msg: "Server error", error });
+    }
 });
 
 module.exports = router;

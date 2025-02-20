@@ -17,11 +17,27 @@ connectDB();
 
 //routes
 
+app.get("/", (req, res) => {
+    res.send("Auction API is running...");
+});
+
 app.use("/api/auctions", require("./routes/auctionRoutes"));
 app.use("/api/bids", require("./routes/bidRoutes"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
+
+//localhost for frontend
+
+const path = require("path");
+
+// Serve frontend
+app.use(express.static(path.join(__dirname, "../frontend")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/index.html"));
+});
+
 
 //Auction end simulation
 
