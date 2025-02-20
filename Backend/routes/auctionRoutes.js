@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
     try {
         const { title, basePrice, startTime, endTime, imageUrl } = req.body;
 
-        const auction = new Auction({ title, basePrice, startTime, endTime, imageUrl });
+        const auction = new Auction({ title, basePrice, startTime, endTime });
         await auction.save();
 
         res.json(auction);

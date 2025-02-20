@@ -8,7 +8,6 @@ const AuctionSchema = new mongoose.Schema({
     highestBid: { type: Number, default: 0 },
     highestBidder: { type: String, default: null },
     status: { type: String, enum: ["upcoming", "active", "ended"], default: "upcoming" },
-    imageUrl: { type: String },
 });
 
 module.exports = mongoose.model("Auction", AuctionSchema);

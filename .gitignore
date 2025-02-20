@@ -14,5 +14,3 @@ logs/
 #Deployment files
 
 .DS_Store
-
-backend/config/firebase-service-account.json
