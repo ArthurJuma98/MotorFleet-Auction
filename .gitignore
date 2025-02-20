@@ -1,1 +1,16 @@
+#node mdoules
+
 node_modules/
+
+#Environmental Variables
+
+backend/.env
+
+#logs
+
+logs/
+*.log
+
+#Deployment files
+
+.DS_Store

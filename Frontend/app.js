@@ -1,4 +1,4 @@
-const API_URL = "";
+const API_URL = "https://my-render-app.onrender.com/api";
 
 // Fetch auctions and display them
 async function fetchAuctions() {
