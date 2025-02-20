@@ -39,17 +39,24 @@ async function fetchAuctionDetails() {
         const res = await fetch(`${API_URL}/auctions/${auctionId}`);
         const auction = await res.json();
 
+        if (!auction || auction.msg) {
+            document.getElementById("auction-details").innerHTML = "<p>Auction not found.</p>";
+            return;
+        }
+
         document.getElementById("auction-details").innerHTML = `
-            <img src="${auction.imageUrl || 'default-car.jpg'}" alt="${auction.title}" style="width:100%; border-radius:10px;">
+            <img src="${API_URL}/upload/${auction.imageId || 'default-car.jpg'}" alt="${auction.title}" style="width:100%; border-radius:10px;">
             <h2>${auction.title}</h2>
-            <p>Base Price: $${auction.basePrice}</p>
-            <p>Highest Bid: $${auction.highestBid || "No bids yet"}</p>
-            <p>Status: <strong>${auction.status}</strong></p>
+            <p><strong>Base Price:</strong> $${auction.basePrice}</p>
+            <p><strong>Highest Bid:</strong> $${auction.highestBid || "No bids yet"}</p>
+            <p><strong>Status:</strong> <span style="color:${auction.status === 'active' ? 'green' : 'red'}">${auction.status.toUpperCase()}</span></p>
         `;
     } catch (error) {
         console.error("Error fetching auction details:", error);
+        document.getElementById("auction-details").innerHTML = "<p>Error loading auction details.</p>";
     }
 }
+
 
 // Place a bid
 async function placeBid() {
