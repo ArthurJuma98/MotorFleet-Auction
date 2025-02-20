@@ -1,6 +1,6 @@
 const express = require("express");
-const Auction = require("..models/Auction");
-const Router = express.Router();
+const Auction = require("../models/Auction");
+const router = express.Router();
 
 //create Auction
 
@@ -35,4 +35,4 @@ router.get("/", async(req, res) => {
     res.json(auctions);
 });
 
-module.exports = Router;
+module.exports = router;
