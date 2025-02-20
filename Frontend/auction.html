@@ -8,15 +8,18 @@
 </head>
 <body>
     <header>
-        <h1>Auction Details</h1>
+        <h1>🚗 Auction Details</h1>
+        <a href="index.html" class="back-btn">⬅️ Back to Listings</a>
     </header>
-    
+
     <div class="container">
         <div id="auction-details"></div>
-        
-        <h3>Place a Bid</h3>
-        <input type="number" id="bid-amount" placeholder="Enter your bid">
-        <button onclick="placeBid()">Submit Bid</button>
+
+        <div class="bid-section">
+            <h3>Place a Bid</h3>
+            <input type="number" id="bid-amount" placeholder="Enter your bid">
+            <button onclick="placeBid()">Submit Bid</button>
+        </div>
     </div>
 
     <script src="app.js"></script>
