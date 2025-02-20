@@ -1,4 +1,4 @@
-const API_URL = "https://my-render-backend.onrender.com/api";
+const API_URL = "https://motorfleet-auction.onrender.com/api";
 
 // Fetch auctions and display them with images
 async function fetchAuctions() {
@@ -86,13 +86,13 @@ async function uploadImage(file) {
     const formData = new FormData();
     formData.append("image", file);
 
-    const res = await fetch("https://my-render-backend.onrender.com/api/upload", {
+    const res = await fetch("https://motorfleet-auction.onrender.com/api/upload", {
         method: "POST",
         body: formData,
     });
 
     const data = await res.json();
-    return `https://my-render-backend.onrender.com/api/upload/${data.imageId}`;
+    return `https://motorfleet-auction.onrender.com/api/upload/${data.imageId}`;
 }
 
 // Auto-fetch data
