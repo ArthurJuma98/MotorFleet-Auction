@@ -17,6 +17,7 @@ connectDB();
 //routes
 
 app.use("/api/auctions", require("./routes/auctionRoutes"));
+app.use("/api/bids", require("./routes/bidRoutes"));
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`server running on port ${PORT}`));
