@@ -3,19 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auction Listings</title>
+    <title>Modern Auction Platform</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <h1>🚗 Online Auction Platform</h1>
-        <a href="create-auction.html" class="create-btn">➕ Create Auction</a>
+        <nav>
+            <a href="index.html" class="nav-btn">🏠 Home</a>
+            <a href="create-auction.html" class="nav-btn">➕ Create Auction</a>
+        </nav>
     </header>
-
-    <div class="container">
+    
+    <main class="container">
         <h2>Available Auctions</h2>
         <div id="auction-list" class="auction-grid"></div>
-    </div>
+    </main>
 
     <script src="app.js"></script>
 </body>
