@@ -1,4 +1,6 @@
-const API_URL = "https://motorfleet-auction.onrender.com/api";
+//const API_URL = "https://motorfleet-auction.onrender.com/api";
+
+const API_URL = "http://localhost:5000/api";
 
 // Fetch auctions and display them with images
 async function fetchAuctions() {
